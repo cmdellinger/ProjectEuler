@@ -20,7 +20,7 @@ def is_prime(number = 0): # -> boolean
         return True
     if number % 2 == 0:
         return False
-    for factor in xrange(3, int(number**0.5), 2):
+    for factor in xrange(3, int(number**0.5+1), 2):
         if number % factor == 0:
             return False
     return True
@@ -31,7 +31,7 @@ largest_factor = 0
 check_number = 600851475143
 
 # check range up to squareroot since checking prime-ness of factor pairs
-for factor in xrange(2,int(check_number**0.5)):
+for factor in xrange(2,int(check_number**0.5+1)):
 
     # print to display status since this might take a while
     print "checking: " + str(factor)
