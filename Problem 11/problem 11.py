@@ -119,7 +119,7 @@ def forward_slash(numbers = []): # -> int
     return max(products)
 
 # print the max of the different directional products
-print max([vertical(numbers),horizontal(numbers),back_slash(numbers),forward_slash(numbers)])
+print "maximum product:", max([vertical(numbers),horizontal(numbers),back_slash(numbers),forward_slash(numbers)])
 
 # print runtime of script
 print "script runtime:", t.clock()
