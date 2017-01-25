@@ -1,7 +1,7 @@
 # -*- coding: UTF-8 -*-
 
 """
-ProjectEuler Problem 10: Largest product in a grid
+ProjectEuler Problem 11: Largest product in a grid
 Written by cmdellinger
 
 Usage:
