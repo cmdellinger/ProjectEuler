@@ -29,16 +29,16 @@ NOTE: Once the chain starts the terms are allowed to go above one million.
 
 import time as t
 
+# collatz_sequence() not used:
+# building and keeping track of the sequence ends up being slower
 def collatz_sequence(number = 0):
     ''' returns the collatz sequence that starts with the inputed number '''
     sequence = [number]
-    element = number
-    while element != 1:
-        if element % 2 == 0:
-            element /= 2
+    while sequence[-1] != 1:
+        if sequence[-1] % 2 == 0:
+            sequence.append(sequence[-1]/2)
         else:
-            element = 3*element + 1
-        sequence.append(element)
+            sequence.append(3*sequence[-1] + 1)
     return sequence
 
 def collatz_sequence_length(number = 0): # -> int
@@ -56,15 +56,17 @@ def collatz_sequence_length(number = 0): # -> int
     # return the length of the sequence
     return index
 
-maximum = 1000000 # exclusive
-longest = [0,0]
-
+# initialize values to test less than maximum and keep track of longest sequence length
+maximum = 1000000 # exclusive maximum
+longest = [0,0] # [staring number, sequence length]
+# check collatz sequence length for test all values less than maximum
 for number in range(1,1000000):
     print "currently testing:", number
     length = collatz_sequence_length(number)
     if length > longest[1]:
         longest = [number,length]
 
+#print longest sequence and what number (index) starts the longest sequence
 print "longest sequence:", longest[1], "for index:", longest[0]
 
 # print runtime of script
