@@ -31,14 +31,23 @@ def name_to_AZ_value(name = ''): # -> int
     return sum([char_to_AZ_value(letter) for letter in name])
 
 # import name name list from file
-with open('names.txt', 'r') as inputfile:
+import os
+script_dir = os.path.dirname(__file__) #<-- absolute dir the script is in
+rel_path = "names.txt"
+abs_file_path = os.path.join(script_dir, rel_path)
+with open(abs_file_path, 'r') as inputfile:
     name_list = sorted(re.findall(u'[^\W_]+', inputfile.readline()))
 
 total = 0
 for index in xrange(len(name_list)):
     total += name_to_AZ_value(name_list[index])*(index+1)
-
 print "total of name scores:", total
+
+print name_list.index('COLIN')
+# trying to refactor
+'''
+print "total of name scores:", sum([set[0]*name_to_AZ_value(set[1]) for set in enumerate(name_list)])
+'''
 
 # print runtime of script
 print "script runtime:", t.clock()
